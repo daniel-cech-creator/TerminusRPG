@@ -285,7 +285,7 @@ while player.hp > 0:
                     
 
                     #Enemy Turn
-                    input()
+                    
                     if opponent.hp > 0:
                         print("\n#=== /// ENEMY TURN \\\\\ ===#\n")
                         player.hp -= opponent.dmg
