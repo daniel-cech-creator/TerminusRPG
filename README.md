@@ -1,6 +1,6 @@
 ---
 
-# TerminusRPG
+# TerminusRPG (WIP)
 A simple Dungeon Crawling game with RPG elements running in your terminal.
 
 ---
