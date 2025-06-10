@@ -1,4 +1,11 @@
 import random, os, sys, time
+#import pygame
+
+#pygame.mixer.init()
+#pygame.init()
+
+#hit_sound = pygame.mixer.Sound("TerminusRPG/sounds/hitHurt.wav")
+#select_sound = pygame.mixer.Sound("TerminusRPG/sounds/blipSelect.wav")
 
 class player:
     def __init__(self,hp,maxHp,coins,dmgMult,mana,maxMana,inventory):
@@ -188,6 +195,7 @@ while nameSet == False:
     clear_terminal()
     print(azure("Who are you..."))
     username = input("> ")
+
     clear_terminal()
     if username == "":
         username = "Unknown"
@@ -195,6 +203,7 @@ while nameSet == False:
     print("0 = No")
     print("1 = Yes")
     choice = str(input("> "))
+
     if choice == "1":
         nameSet = True
     elif choice == "0":
@@ -222,10 +231,12 @@ while player.hp > 0:
     print(f"Mana: {blue(player.mana)}/{blue(player.maxMana)}")
     print(f"Rooms cleared:",azure(roomsCleared))
     print(f"Gold:",yellow(player.coins))
+    print(f"Equipped weapon: {equippedWeapon.name} {red(f"{equippedWeapon.dmg} DMG")}")
     print("＿＿＿＿＿＿＿＿＿＿\n")
     print(azure("What will you do?"))
     print("1 = Go to next room | 2 = Inventory")
     choice = str(input("> "))
+
     if choice == "exit":
         exit()
 
@@ -252,6 +263,7 @@ while player.hp > 0:
         elif roomType == 2:
             print(red("There's an enemy blocking the way!"))
             input()
+            
 
             #Battle Loop
             opponent = enemies[random.randint(1,3)]
@@ -267,22 +279,28 @@ while player.hp > 0:
                 print(azure("What will you do?"))
                 print("1 = Attack | 2 = Inventory")
                 choice = str(input("> "))
+                
+
                 if choice == "1":
 
                     dealtDMG = equippedWeapon.dmg * player.dmgMult
                     opponent.hp -= dealtDMG
                     print(f"\nYou've dealt {red(dealtDMG)} DMG.")
+                    
 
                     #Enemy Turn
+                    input()
                     if opponent.hp > 0:
                         print("\n#=== /// ENEMY TURN \\\\\ ===#\n")
                         player.hp -= opponent.dmg
                         print(f"The enemy dealt {opponent.dmg} DMG.")
+                        
                     else:
                         print("The enemy died before it could attack back.")
                 else:
                     print(red("Invalid input!"))
                 input()
+
                 clear_terminal()
             if player.hp > 0:
                 
@@ -327,9 +345,14 @@ while player.hp > 0:
                 clear_terminal()
                 inventoryOpen()
 
+                slotSelected = False
                 invSlotAmount = len(player.inventory)
                 print(azure("\nSelect slot number:"))
                 choice = str(input("> "))
+                if choice == "":
+                    print(red("Invalid input!"))
+                    input()
+                    continue
 
                 chosenIndex = (int(choice)-1)
                 if player.inventory[chosenIndex]=="Empty":
@@ -340,11 +363,14 @@ while player.hp > 0:
                     print("\nSelected item:",selectedItem.name)
 
                     if selectedItem.tag == "weapon":
+                        print(red(f"{selectedItem.dmg} DMG"))
+                        print(f"{red(selectedItem.info)}")
                         print(azure("\nWhat will you do?"))
                         print("1 = Back | 2 = Equip | 3 = Toss")
                     
-
                     elif selectedItem.tag == "consum":
+                        print(f"{selectedItem.effect}")
+                        print(f"{selectedItem.info}")
                         print(azure("\nWhat will you do?"))
                         print("1 = Back | 2 = Consume | 3 = Toss")
                 input()
@@ -356,16 +382,23 @@ while player.hp > 0:
     input()
     clear_terminal()
 
-#To-do
-#upgraded inventory
-#gold/money indicator
-#fix room counting
-#floors
+#-- TO-DO LIST --
+#   Option to upgrade inventory size
+#   Add new floors
+#   Add sound effects / Music if possible
 
 #SHOPKEEPER
 #   -Every 15 rooms, there's a guaranteed encounter with the shopkeeper. He lets you buy from 5 randomly selected items
 #   (based on the floor you're at)
 
-#Different floors, which will get harder and harder as the player progresses further. New enemies, new weapons, new items.
+#Different floors, which will get harder as the player progresses further. New enemies, new weapons, new items.
 #   -Basement, Labyrinth, Catacombs, Atrium
-#   -SPECIAL FLOOR - Arena, Archive
+#   -SPECIAL FLOOR - Arena
+#       -Arena - A special floor which only consists of battles every turn.
+
+#ROOM TYPES
+#   -Empty room (Chance to find free gold)
+#   -Battle room (Random enemy based on the floor)
+#   -Treasure room (Gives you one random item based on the floor)
+#   -Shop (Lets you spend your gold on randomly selected items)
+#   -Archive (Let's you choose from three random spell scrolls)
