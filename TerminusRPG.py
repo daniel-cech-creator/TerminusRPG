@@ -1,14 +1,7 @@
-#MADE BY DANIEL ČECH, THE CREATOR :)
-
+#Made by Daniel Čech
+#maxi prosim nekrad mi to
 
 import random, os, sys, time
-#import pygame
-
-#pygame.mixer.init()
-#pygame.init()
-
-#hit_sound = pygame.mixer.Sound("TerminusRPG/sounds/hitHurt.wav")
-#select_sound = pygame.mixer.Sound("TerminusRPG/sounds/blipSelect.wav")
 
 class player:
     def __init__(self,hp,maxHp,coins,dmgMult,mana,maxMana,inventory):
