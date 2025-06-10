@@ -11,5 +11,6 @@ A simple Dungeon Crawling game with RPG elements running in your terminal.
 
 
 ![image](https://github.com/user-attachments/assets/637a1839-d0f7-4494-9526-57d462470be1)
+
 "TerminusRPG is a work of art. I can assure you there's nothing that could top it!"
-                                                      -Number 1 customer
+  - Number 1 customer
