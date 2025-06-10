@@ -1,3 +1,6 @@
+#MADE BY DANIEL ČECH, THE CREATOR :)
+
+
 import random, os, sys, time
 #import pygame
 
