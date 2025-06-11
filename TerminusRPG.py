@@ -97,16 +97,28 @@ def inventoryOpen():
         else:
             print(f"Slot {i+1}:", item.name)
 
-def wait():
-    anim = ["･･･","•･･","••･","•••","･••","･･•","･･･",]
+#   OLD LOADING ANIM
+#def wait():
+#    anim = ["･･･","•･･","••･","•••","･••","･･•","･･･",]
+#    for _ in range(1):
+#        for frame in anim:
+#            sys.stdout.write(f"\r{frame}")
+#            sys.stdout.flush()
+#            time.sleep(0.18)
+#    sys.stdout.write(f"   ")
+#    sys.stdout.flush()
+#    print(" ")
+
+def wait(n):
+    anim = ["[-----]","[#----]","[##---]","[###--]","[####-]","[#####]",]
     for _ in range(1):
         for frame in anim:
             sys.stdout.write(f"\r{frame}")
             sys.stdout.flush()
-            time.sleep(0.18)
+            time.sleep(n/6)
     sys.stdout.write(f"   ")
     sys.stdout.flush()
-    print(" ")
+    clear_terminal()
 
 #=== /// WEAPONS \\\ ===#
 #Name, DMG, Cost, Info
@@ -142,6 +154,9 @@ gurt = enemy("Gurt",30,30,4,6)
 matyas_janousek = enemy("Matyáš Janoušek",100,100,18,121)
 moto_moto = enemy("Moto Moto",135,135,8,4)
 dusek_acolyte = enemy("Order of Dušek Acolyte",114,114,17,130)
+
+#Bosses
+meat_wall = enemy("Meat Wall",187,187,4,217)
 
 #Weapon IDs
 weapons = {
@@ -215,7 +230,7 @@ player.dmgMult = 1
 player.mana = 0
 player.maxMana = 5
 player.inventory = ["Empty","Empty","Empty","Empty","Empty"]
-equippedWeapon = weapons[2]
+equippedWeapon = weapons[1]
 equippedConsum = consumables[2]
 roomsCleared = 0
 
@@ -239,7 +254,7 @@ while player.hp > 0:
     #Entering the next room
     if choice == "1":
         clear_terminal()
-        wait()
+        wait(1)
         clear_terminal()
 
         #Chooses the room type
