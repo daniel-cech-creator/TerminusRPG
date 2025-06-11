@@ -1,5 +1,5 @@
 #Made by Daniel Čech
-#maxi prosim nekrad mi to
+#maxi a eriku prosim nekrad mi to
 
 import random, os, sys, time
 
