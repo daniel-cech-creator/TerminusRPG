@@ -11,4 +11,5 @@ A simple Dungeon Crawling game with RPG elements running in your terminal.
   - Special abilities **(Coming soon)**.
   - Lots of different enemies and bosses **(Coming soon)**.
   - Different room types and encounters.
+  - blublublublublu
 ---
