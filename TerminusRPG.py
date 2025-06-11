@@ -389,7 +389,7 @@ while player.hp > 0:
 
 #Different floors, which will get harder as the player progresses further. New enemies, new weapons, new items.
 #   -Basement, Labyrinth, Catacombs, Atrium
-#   -SPECIAL FLOOR - Arena
+#   -SPECIAL FLOORS
 #       -Arena - A special floor which only consists of battles every turn.
 
 #ROOM TYPES
