@@ -188,6 +188,13 @@ enemies = {
     9: dusek_acolyte,
 }
 
+floors = {
+    1: "Basement",
+    2: "Catacombs",
+    3: "Labyrinth",
+    4: "Atrium",
+}
+
 chestLootTable = {
     empty_gun: 20,
     lesser_heal_pot: 30,
@@ -233,11 +240,12 @@ player.inventory = ["Empty","Empty","Empty","Empty","Empty"]
 equippedWeapon = weapons[1]
 equippedConsum = consumables[2]
 roomsCleared = 0
-
+currentFloor = floors[1]
 clear_terminal()
 
 #=== /// MAIN GAMEPLAY LOOP \\\ ===#
 while player.hp > 0:
+    print(f"Floor: {currentFloor}\n")
     print(f"HP: {green(player.hp)}/{green(player.maxHp)}")
     print(f"Mana: {blue(player.mana)}/{blue(player.maxMana)}")
     print(f"Rooms cleared:",azure(roomsCleared))
