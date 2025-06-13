@@ -129,6 +129,16 @@ greatsword = weapon("Greatsword",28,68,"And old sword once used by the order of 
 empty_gun = weapon("Empty Gun",10,95,"An old gun once used by the nefarious Wisman gang.","weapon")
 new_magic_wand = weapon("New Magic Wand",21,43,"I saw a photo you looked joyous...","weapon")
 long_bow = weapon("Long Bow",20,54,"A wooden long bow handcrafted by unpaid Temu workers.","weapon")
+#fencing_sword
+#greed_dagger
+#vampire_blade
+#iron_fists
+#battle_axe
+#fish
+#crystal_saber
+#hell_fork
+#shadow_edge
+#star_splitter
 
 
 #=== /// CONSUMABLES \\\ ===#
@@ -137,6 +147,10 @@ lesser_heal_pot = consumable("Lesser Healing Potion","Heals the player for 10 HP
 great_heal_pot = consumable("Great Healing Potion","Heals the player for +35 HP",50,"Tastes like skittles and oil... and Red40.", lambda: playerHeal(35),"consum")
 lesser_mana_pot = consumable("Lesser Mana Potion","Gives the player +2 Mana",42,"Smells like mouthwash.", lambda: manaUp(2),"consum")
 great_mana_pot = consumable("Great Mana Potion","Gives the player +5 Mana",73,"Tastes like toothpaste with orange juice.", lambda: manaUp(5),"consum")
+#crit_pot
+#lesser_regen_pot
+#great_regen_pot
+#
 
 #=== /// ENEMIES \\\ ===#
 #Name, HP, MaxHP, DMG, Loot
