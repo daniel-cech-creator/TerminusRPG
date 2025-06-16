@@ -19,5 +19,5 @@ A simple Dungeon Crawling game with RPG elements running in your terminal.
   - New weapons, some with special attributes.
   - Different floors that alter the enemies and treasures.
   - Passive effects.
-  - Shopkeeper.
+  - Dealmaker.
   - ASCII art scenery.
