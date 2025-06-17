@@ -349,8 +349,34 @@ while player.hp > 0:
             
         elif roomType == 3:
             print(yellow("You found a treasure a chest!"))
+            input()
+            clear_terminal()
+            print(r"""
+
+                  
+                                    
+  ..-------..
+ //         \\
+||====.-.====||
+||   <=O=>   ||
+||____'-'____||
+'-------------'
+            """)
+            
             loot = random.choices(list(chestLootTable.keys()), weights=list(chestLootTable.values()), k=1)[0]
             input()
+            clear_terminal()
+            print(r"""
+  .=='''''==.
+  ||       || 
+  ||       ||
+  ||_______||  
+ .'|       |'.
+||====.-.====||
+||   <=O=>   ||
+||____'-'____||
+'-------------'           
+            """)
             print(f"You found: {loot.name}")
             for i in range(len(player.inventory)):
                         if player.inventory[i] == "Empty":
