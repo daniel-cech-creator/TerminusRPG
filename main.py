@@ -97,6 +97,14 @@ def inventoryOpen():
         else:
             print(f"Slot {i+1}:", item.name)
 
+def maxStatCheck():
+    if player.hp > player.maxHp:
+        player.hp = player.maxHp
+    if player.mana > player.maxMana:
+        player.mana = player.maxMana
+    
+
+
 #   OLD LOADING ANIM
 #def wait():
 #    anim = ["･･･","•･･","••･","•••","･••","･･•","･･･",]
@@ -143,8 +151,8 @@ long_bow = weapon("Long Bow",20,54,"A wooden long bow handcrafted by unpaid Temu
 
 #=== /// CONSUMABLES \\\ ===#
 #Name, Effect, Cost, Info, Trigger (the assigned function)
-lesser_heal_pot = consumable("Lesser Healing Potion","Heals the player for 10 HP.",35,"Consists mostly of Red40.",lambda: playerHeal(10),"consum")
-great_heal_pot = consumable("Great Healing Potion","Heals the player for +35 HP",50,"Tastes like skittles and oil... and Red40.", lambda: playerHeal(35),"consum")
+lesser_heal_pot = consumable("Lesser Healing Potion","Heals the player for 10 HP.",35,"Consists mostly of Red40.",lambda: playerHeal(20),"consum")
+great_heal_pot = consumable("Great Healing Potion","Heals the player for +35 HP",50,"Tastes like skittles and oil... and Red40.", lambda: playerHeal(42),"consum")
 lesser_mana_pot = consumable("Lesser Mana Potion","Gives the player +2 Mana",42,"Smells like mouthwash.", lambda: manaUp(2),"consum")
 great_mana_pot = consumable("Great Mana Potion","Gives the player +5 Mana",73,"Tastes like toothpaste with orange juice.", lambda: manaUp(5),"consum")
 #crit_pot
@@ -435,6 +443,25 @@ while player.hp > 0:
                         print(f"{selectedItem.info}")
                         print(azure("\nWhat will you do?"))
                         print("1 = Back | 2 = Consume | 3 = Toss")
+                        choice = str(input("> "))
+                        if choice == "1":
+                            continue
+                        elif choice == "2":
+                            selectedItem.trigger()
+                            maxStatCheck()
+                            player.inventory[chosenIndex] = "Empty"
+                        elif choice == "3":
+                            print(f"\nAre you sure you want to throw {player.inventory[chosenIndex].name} away?")
+                            print(f"1 = Yes | 2 = No")
+                            choice = str(input("> "))
+                            if choice == "1":
+                                player.inventory[chosenIndex] = "Empty"
+                            elif choice == "2":
+                                continue
+                            else:
+                                print(red("Invalid Input!"))
+
+
                 input()
             else:
                 print(red("Invalid Input!"))
