@@ -351,31 +351,34 @@ while player.hp > 0:
             print(yellow("You found a treasure a chest!"))
             input()
             clear_terminal()
-            print(r"""
 
+            #chest frame1
+            print(r"""
+    -Enter to open-
                   
                                     
-  ..-------..
- //         \\
-||====.-.====||
-||   <=O=>   ||
-||____'-'____||
-'-------------'
+      ..-------..
+     //         \\
+    ||====.-.====||
+    ||   <=O=>   ||
+    ||____'-'____||
+    '-------------'
             """)
             
             loot = random.choices(list(chestLootTable.keys()), weights=list(chestLootTable.values()), k=1)[0]
             input()
             clear_terminal()
+            #chest frame2
             print(r"""
-  .=='''''==.
-  ||       || 
-  ||       ||
-  ||_______||  
- .'|       |'.
-||====.-.====||
-||   <=O=>   ||
-||____'-'____||
-'-------------'           
+      .=='''''==.
+      ||       || 
+      ||       ||
+      ||_______||  
+     .'|       |'.
+    ||====.-.====||
+    ||   <=O=>   ||
+    ||____'-'____||
+    '-------------'           
             """)
             print(f"You found: {loot.name}")
             for i in range(len(player.inventory)):
