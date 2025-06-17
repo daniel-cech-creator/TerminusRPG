@@ -219,9 +219,9 @@ floors = {
 
 chestLootTable = {
     empty_gun: 20,
-    lesser_heal_pot: 30,
-    great_heal_pot: 10,
-    lesser_mana_pot: 40
+    lesser_heal_pot: 40,
+    great_heal_pot: 20,
+    lesser_mana_pot: 20
 }
 
 clear_terminal()
@@ -301,13 +301,14 @@ while player.hp > 0:
                 player.coins += receivedCoins
                 print(yellow(f"+{receivedCoins} coins."))
                 roomsCleared += 1
+            input()
         elif roomType == 2:
             print(red("There's an enemy blocking the way!"))
             input()
             
 
             #Battle Loop
-            opponent = enemies[random.randint(1,3)]
+            opponent = enemies[random.randint(1,2)]
             opponent.hp = opponent.maxHp
             clear_terminal()
         
@@ -354,6 +355,7 @@ while player.hp > 0:
             player.mana += 1
             if player.mana > player.maxMana:
                 player.mana = player.maxMana
+            input()
             
         elif roomType == 3:
             print(yellow("You found a treasure a chest!"))
@@ -395,6 +397,7 @@ while player.hp > 0:
                             break
 
             roomsCleared += 1
+            input()
 
     #Opening inventory
     elif choice == "2":
@@ -460,6 +463,7 @@ while player.hp > 0:
                                 continue
                             else:
                                 print(red("Invalid Input!"))
+                                input()
 
 
                 input()
@@ -468,7 +472,7 @@ while player.hp > 0:
                 input()
     else:
         print(red("Invalid input!"))
-    input()
+        input()
     clear_terminal()
 
 #-- TO-DO LIST --
@@ -479,6 +483,7 @@ while player.hp > 0:
 #SHOPKEEPER
 #   -Every 15 rooms, there's a guaranteed encounter with the shopkeeper. He lets you buy from 5 randomly selected items
 #   (based on the floor you're at)
+#   (the shopkeeper's appearance will be determined by the floor you're on.)
 
 #Different floors, which will get harder as the player progresses further. New enemies, new weapons, new items.
 #   -Basement, Labyrinth, Catacombs, Atrium
