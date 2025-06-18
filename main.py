@@ -218,10 +218,15 @@ floors = {
 }
 
 chestLootTable = {
-    empty_gun: 20,
-    lesser_heal_pot: 40,
-    great_heal_pot: 20,
-    lesser_mana_pot: 20
+    empty_gun: 10,
+    lesser_heal_pot: 25,
+    great_heal_pot: 15,
+    lesser_mana_pot: 20,
+    great_mana_pot: 10,
+    old_pickaxe: 5,
+    greatsword: 5,
+    new_magic_wand: 5,
+    giant_hammer: 5,
 }
 
 clear_terminal()
@@ -378,6 +383,7 @@ while player.hp > 0:
             loot = random.choices(list(chestLootTable.keys()), weights=list(chestLootTable.values()), k=1)[0]
             input()
             clear_terminal()
+            
             #chest frame2
             print(r"""
       .=='''''==.
@@ -435,18 +441,44 @@ while player.hp > 0:
                     selectedItem = player.inventory[chosenIndex]
                     print("\nSelected item:",selectedItem.name)
 
+
+                    #WEAPONS
                     if selectedItem.tag == "weapon":
                         print(red(f"{selectedItem.dmg} DMG"))
                         print(f"{red(selectedItem.info)}")
                         print(azure("\nWhat will you do?"))
                         print("1 = Back | 2 = Equip | 3 = Toss")
+
+                        choice = str(input("> "))
+                        if choice == "1":
+                            continue
+                        elif choice == "2":
+                            player.inventory[chosenIndex] = equippedWeapon
+
+                            currentWeapon = equippedWeapon
+                            equippedWeapon = selectedItem
+                        elif choice == "3":
+                            print(f"\nAre you sure you want to throw {player.inventory[chosenIndex].name} away?")
+                            print(f"1 = Yes | 2 = No")
+                            choice = str(input("> "))
+                            if choice == "1":
+                                player.inventory[chosenIndex] = "Empty"
+                            elif choice == "2":
+                                continue
+                            else:
+                                print(red("Invalid Input!"))
+                                input()
+                            
+
                     
+                    #CONSUM
                     elif selectedItem.tag == "consum":
                         print(f"{selectedItem.effect}")
                         print(f"{selectedItem.info}")
                         print(azure("\nWhat will you do?"))
                         print("1 = Back | 2 = Consume | 3 = Toss")
                         choice = str(input("> "))
+
                         if choice == "1":
                             continue
                         elif choice == "2":
