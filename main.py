@@ -151,8 +151,8 @@ long_bow = weapon("Long Bow",20,54,"A wooden long bow handcrafted by unpaid Temu
 
 #=== /// CONSUMABLES \\\ ===#
 #Name, Effect, Cost, Info, Trigger (the assigned function)
-lesser_heal_pot = consumable("Lesser Healing Potion","Heals the player for 10 HP.",35,"Consists mostly of Red40.",lambda: playerHeal(20),"consum")
-great_heal_pot = consumable("Great Healing Potion","Heals the player for +35 HP",50,"Tastes like skittles and oil... and Red40.", lambda: playerHeal(42),"consum")
+lesser_heal_pot = consumable("Lesser Healing Potion","Heals the player for +20 HP.",35,"Consists mostly of Red40.",lambda: playerHeal(20),"consum")
+great_heal_pot = consumable("Great Healing Potion","Heals the player for +42 HP",50,"Tastes like skittles and oil... and Red40.", lambda: playerHeal(42),"consum")
 lesser_mana_pot = consumable("Lesser Mana Potion","Gives the player +2 Mana",42,"Smells like mouthwash.", lambda: manaUp(2),"consum")
 great_mana_pot = consumable("Great Mana Potion","Gives the player +5 Mana",73,"Tastes like toothpaste with orange juice.", lambda: manaUp(5),"consum")
 #crit_pot
@@ -257,6 +257,7 @@ while nameSet == False:
         print(red("Invalid input!"))
         input()
 
+
 player.hp = 100
 player.maxHp = player.hp
 player.coins = 0
@@ -277,7 +278,7 @@ while player.hp > 0:
     print(f"Mana: {blue(player.mana)}/{blue(player.maxMana)}")
     print(f"Rooms cleared:",azure(roomsCleared))
     print(f"Gold:",yellow(player.coins))
-    print(f"Equipped weapon: {equippedWeapon.name} {red(f"{equippedWeapon.dmg} DMG")}")
+    print(f"Equipped weapon: {equippedWeapon.name} - {red(f"{equippedWeapon.dmg} DMG")}")
     print("＿＿＿＿＿＿＿＿＿＿\n")
     print(azure("What will you do?"))
     print("1 = Go to next room | 2 = Inventory")
@@ -371,7 +372,7 @@ while player.hp > 0:
             print(r"""
     -Enter to open-
                   
-                                    
+
       ..-------..
      //         \\
     ||====.-.====||
@@ -382,6 +383,7 @@ while player.hp > 0:
             
             loot = random.choices(list(chestLootTable.keys()), weights=list(chestLootTable.values()), k=1)[0]
             input()
+            wait(0.5)
             clear_terminal()
             
             #chest frame2
@@ -436,6 +438,7 @@ while player.hp > 0:
                 chosenIndex = (int(choice)-1)
                 if player.inventory[chosenIndex]=="Empty":
                     print("Selected slot is empty.")
+                    input()
                 else:
 
                     selectedItem = player.inventory[chosenIndex]
@@ -498,7 +501,7 @@ while player.hp > 0:
                                 input()
 
 
-                input()
+                #input()
             else:
                 print(red("Invalid Input!"))
                 input()
