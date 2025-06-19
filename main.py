@@ -88,6 +88,7 @@ def manaUp(n):
 def clear_terminal():
     os.system('cls' if os.name == 'nt' else 'clear')
 
+#Draws out inventory slots
 def inventoryOpen():
     print(white("\n#*=== /// INVENTORY \\\\\ ===*#"))
     for i in range(5):
@@ -97,25 +98,12 @@ def inventoryOpen():
         else:
             print(f"Slot {i+1}:", item.name)
 
+#Make sures the stats don't surpass their maximum value
 def maxStatCheck():
     if player.hp > player.maxHp:
         player.hp = player.maxHp
     if player.mana > player.maxMana:
         player.mana = player.maxMana
-    
-
-
-#   OLD LOADING ANIM
-#def wait():
-#    anim = ["･･･","•･･","••･","•••","･••","･･•","･･･",]
-#    for _ in range(1):
-#        for frame in anim:
-#            sys.stdout.write(f"\r{frame}")
-#            sys.stdout.flush()
-#            time.sleep(0.18)
-#    sys.stdout.write(f"   ")
-#    sys.stdout.flush()
-#    print(" ")
 
 def wait(n):
     anim = ["[-----]","[#----]","[##---]","[###--]","[####-]","[#####]",]

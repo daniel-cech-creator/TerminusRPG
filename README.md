@@ -1,11 +1,13 @@
 ---
 
 # TerminusRPG (WIP)
-A simple Dungeon Crawling game with RPG elements running in your terminal.
+A simple Dungeon Crawling game with RPG elements made in Python running in your terminal.
 
+ 
+('o') really cool and original huh?................ 
 ---
 
-## What TerminusRPG has to offer
+## What TerminusRPG has to offer (or atleast wishes to)
   - Special room encounters.
   - Dozens of weapons with different stats.
   - Various enemies.
@@ -21,3 +23,15 @@ A simple Dungeon Crawling game with RPG elements running in your terminal.
   - Passive effects.
   - Dealmaker.
   - ASCII art scenery.
+
+
+
+
+
+
+
+
+  ___
+ //_\\ _  "chayse yor dreems, mai mesidge to yu"
+/_|_|_('>                                     -Gurtle
+ "   "
