@@ -31,7 +31,7 @@ A simple Dungeon Crawling game with RPG elements made in Python running in your 
 
 
 
-  ___
- //_\\ _  "chayse yor dreems, mai mesidge to yu"
-/_|_|_('>                                     -Gurtle
- "   "
+    ___
+   //_\\ _  "chayse yor dreems, mai mesidge to yu"
+  /_|_|_('>                                     -Gurtle
+   "   "
