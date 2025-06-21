@@ -1,5 +1,4 @@
 #Made by Daniel Čech
-#maxi a eriku prosim nekrad mi to
 
 import random, os, sys, time
 
@@ -105,6 +104,7 @@ def maxStatCheck():
     if player.mana > player.maxMana:
         player.mana = player.maxMana
 
+#Makes a loading bar based lasting n seconds
 def wait(n):
     anim = ["[-----]","[#----]","[##---]","[###--]","[####-]","[#####]",]
     for _ in range(1):
@@ -143,10 +143,10 @@ lesser_heal_pot = consumable("Lesser Healing Potion","Heals the player for +20 H
 great_heal_pot = consumable("Great Healing Potion","Heals the player for +42 HP",50,"Tastes like skittles and oil... and Red40.", lambda: playerHeal(42),"consum")
 lesser_mana_pot = consumable("Lesser Mana Potion","Gives the player +2 Mana",42,"Smells like mouthwash.", lambda: manaUp(2),"consum")
 great_mana_pot = consumable("Great Mana Potion","Gives the player +5 Mana",73,"Tastes like toothpaste with orange juice.", lambda: manaUp(5),"consum")
-#crit_pot
+#lesser_crit_pot
+#great_crit_pot
 #lesser_regen_pot
 #great_regen_pot
-#
 
 #=== /// ENEMIES \\\ ===#
 #Name, HP, MaxHP, DMG, Loot
