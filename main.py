@@ -433,7 +433,7 @@ while player.hp > 0:
                     print("\nSelected item:",selectedItem.name)
 
 
-                    #WEAPONS
+                    #WEAPON
                     if selectedItem.tag == "weapon":
                         print(red(f"{selectedItem.dmg} DMG"))
                         print(f"{red(selectedItem.info)}")
@@ -488,8 +488,6 @@ while player.hp > 0:
                                 print(red("Invalid Input!"))
                                 input()
 
-
-                #input()
             else:
                 print(red("Invalid Input!"))
                 input()
