@@ -3,7 +3,7 @@
 import random, os, sys, time
 
 class player:
-    def __init__(self,hp,maxHp,coins,dmgMult,mana,maxMana,inventory):
+    def __init__(self,hp,maxHp,coins,dmgMult,mana,maxMana,inventory,invSize):
         self.hp = hp
         self.maxHp = maxHp
         self.coins = coins
@@ -11,6 +11,7 @@ class player:
         self.mana = mana
         self.maxMana = maxMana
         self.inventory = inventory
+        self.invSize = invSize
 
 class weapon:
     def __init__(self,name,dmg,cost,info,tag):
@@ -84,13 +85,18 @@ def playerHeal(n):
 def manaUp(n):
     player.mana += n
 
+def invUp(n):
+    player.invSize += n
+    for _ in range(n):
+        player.inventory.append("Empty")
+
 def clear_terminal():
     os.system('cls' if os.name == 'nt' else 'clear')
 
 #Draws out inventory slots
 def inventoryOpen():
     print(white("\n#*=== /// INVENTORY \\\\\ ===*#"))
-    for i in range(5):
+    for i in range(player.invSize):
         item = player.inventory[i]
         if item == "Empty":
             print(f"Slot {i+1}:", white("Empty"))
@@ -147,6 +153,8 @@ great_mana_pot = consumable("Great Mana Potion","Gives the player +5 Mana",73,"T
 #great_crit_pot
 #lesser_regen_pot
 #great_regen_pot
+extra_pocket = consumable("Extra Pocket","Adds +1 inventory slot",84,"The knitting is pretty sloppy", lambda: invUp(1),"consum")
+
 
 #=== /// ENEMIES \\\ ===#
 #Name, HP, MaxHP, DMG, Loot
@@ -210,11 +218,12 @@ chestLootTable = {
     lesser_heal_pot: 25,
     great_heal_pot: 15,
     lesser_mana_pot: 20,
-    great_mana_pot: 10,
+    great_mana_pot: 5,
     old_pickaxe: 5,
     greatsword: 5,
     new_magic_wand: 5,
     giant_hammer: 5,
+    extra_pocket: 5
 }
 
 clear_terminal()
@@ -252,7 +261,11 @@ player.coins = 0
 player.dmgMult = 1
 player.mana = 0
 player.maxMana = 5
-player.inventory = ["Empty","Empty","Empty","Empty","Empty"]
+player.invSize = 5
+player.inventory = []
+for i in range(player.invSize):
+    player.inventory.append("Empty")
+
 equippedWeapon = weapons[1]
 equippedConsum = consumables[2]
 roomsCleared = 0
@@ -467,7 +480,7 @@ while player.hp > 0:
                         print(f"{selectedItem.effect}")
                         print(f"{selectedItem.info}")
                         print(azure("\nWhat will you do?"))
-                        print("1 = Back | 2 = Consume | 3 = Toss")
+                        print("1 = Back | 2 = Use | 3 = Toss")
                         choice = str(input("> "))
 
                         if choice == "1":
@@ -497,7 +510,6 @@ while player.hp > 0:
     clear_terminal()
 
 #-- TO-DO LIST --
-#   Option to upgrade inventory size
 #   Add new floors
 #   Add sound effects / Music if possible
 
