@@ -85,6 +85,7 @@ def playerHeal(n):
 def manaUp(n):
     player.mana += n
 
+#Increases the players inv size by the set value.
 def invUp(n):
     player.invSize += n
     for _ in range(n):
@@ -110,7 +111,7 @@ def maxStatCheck():
     if player.mana > player.maxMana:
         player.mana = player.maxMana
 
-#Makes a loading bar based lasting n seconds
+#draws a loading bar based lasting n seconds
 def wait(n):
     anim = ["[-----]","[#----]","[##---]","[###--]","[####-]","[#####]",]
     for _ in range(1):
@@ -132,14 +133,14 @@ empty_gun = weapon("Empty Gun",10,95,"An old gun once used by the nefarious Wism
 new_magic_wand = weapon("New Magic Wand",21,43,"I saw a photo you looked joyous...","weapon")
 long_bow = weapon("Long Bow",20,54,"A wooden long bow handcrafted by unpaid Temu workers.","weapon")
 #fencing_sword
-#greed_dagger
-#vampire_blade
+#greed_dagger - gives coins after every hit
+#vampire_blade - heals after every hit
 #iron_fists
 #battle_axe
 #fish
 #crystal_saber
 #hell_fork
-#shadow_edge
+#shadow_edge - 2x dmg in Atrium
 #star_splitter
 
 
@@ -153,7 +154,8 @@ great_mana_pot = consumable("Great Mana Potion","Gives the player +5 Mana",73,"T
 #great_crit_pot
 #lesser_regen_pot
 #great_regen_pot
-extra_pocket = consumable("Extra Pocket","Adds +1 inventory slot",84,"The knitting is pretty sloppy", lambda: invUp(1),"consum")
+small_pocket = consumable("Small Pocket","Adds +1 inventory slot",84,"The knitting is pretty sloppy", lambda: invUp(1),"consum")
+big_pocket = consumable("Big Pocket","Adds +2 inventory slot",84,"You could fit a chair in that", lambda: invUp(2),"consum")
 
 
 #=== /// ENEMIES \\\ ===#
@@ -213,6 +215,11 @@ floors = {
     4: "Atrium",
 }
 
+floorLootTable = {
+    floors[1] 
+}
+
+
 chestLootTable = {
     empty_gun: 10,
     lesser_heal_pot: 25,
@@ -223,7 +230,7 @@ chestLootTable = {
     greatsword: 5,
     new_magic_wand: 5,
     giant_hammer: 5,
-    extra_pocket: 5
+    small_pocket: 5
 }
 
 clear_terminal()
@@ -295,6 +302,7 @@ while player.hp > 0:
         clear_terminal()
 
         #Chooses the room type
+        
         roomType = random.randint(1,3)
         print("You entered the next room.")
         if roomType == 1:
